@@ -1,0 +1,14 @@
+[
+    {
+        "timeOfTrial": "2023-09-14T09:25:09",
+        "attemptStatus": true
+    },
+    {
+        "timeOfTrial": "2023-09-14T09:28:30",
+        "attemptStatus": "Already Scanned - No Action Needed"
+    },
+    {
+        "timeOfTrial": "2023-11-01T19:07:52",
+        "attemptStatus": true
+    }
+]
