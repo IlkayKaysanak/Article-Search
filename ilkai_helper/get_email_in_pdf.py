@@ -1,7 +1,7 @@
 import pdfplumber
 import re
 
-def extract_emails_from_pdf(pdf_path):
+def emails_from_pdf(pdf_path):
     emails = []
     email_pattern = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b')
     

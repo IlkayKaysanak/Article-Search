@@ -33,6 +33,9 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 # Scraper body chunks
 from common.helpers.methods.scraper_body_components import dergipark_components
+from ilkai_helper.get_email_in_pdf import emails_from_pdf
+from ilkai_helper.list_pdf import list_pdf_names
+from ilkai_helper.mail_and_author_map import map_emails_to_authors
 from ilkai_helper.test_save import save_json_to_txt
 
 is_test = True
@@ -534,7 +537,28 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 send_notification(DownloadError(f"Download was not finished in time, "
                                                                 f"{journal_name, recent_volume, recent_issue},"
                                                                 f" article num {i}."))
-
+                        
+                        pdf_names = list_pdf_names(download_path)
+                        emails = emails_from_pdf(download_path+'/'+pdf_names)
+                        for author in authors:
+                            author_name_parts = re.split(r'\s+', author.name.lower())  
+                            for email in emails:
+                                email_lower = email.lower()
+                                if any(part in email_lower for part in author_name_parts):
+                                    author.mail = email
+                                    break
+                        #print(map_emails_to_authors(authors,email))
+                        '''
+                        for author in authors:
+                            if author.is_correspondence:
+                                author.mail = email
+                        print(authors)
+                        '''
+                        
+                        print(authors)
+                        print("email Names:", emails)
+                        
+                        
                         # GET RESPONSE BODY OF THE AZURE RESPONSE
                         azure_article_data = None
                         if with_azure and location_header:
@@ -600,6 +624,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             save_json_to_txt(final_article_data)
 
                         i += 1  # Loop continues with the next article
+                        
                         clear_directory(download_path)
 
                         if is_test and i >= 2:
