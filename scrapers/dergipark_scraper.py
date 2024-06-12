@@ -552,7 +552,8 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                         break
                                 else:
                                     pass
-
+                        print(authors)
+                        print("email Names:", emails)                
                         # Add Missing Doi                
                         print(article_doi)
 
@@ -564,8 +565,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             print(pdf_doi)
                        
 
-                        print(authors)
-                        print("email Names:", emails)
+                        
                         
                         
                         # GET RESPONSE BODY OF THE AZURE RESPONSE
