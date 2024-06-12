@@ -540,21 +540,34 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         
                         pdf_names = list_pdf_names(download_path)
                         emails = emails_from_pdf(download_path+'/'+pdf_names)
-                        for author in authors:
-                            author_name_parts = re.split(r'\s+', author.name.lower())  
-                            for email in emails:
-                                email_lower = email.lower()
-                                if any(part in email_lower for part in author_name_parts):
-                                    author.mail = email
-                                    break
-                        #print(map_emails_to_authors(authors,email))
-                        '''
-                        for author in authors:
-                            if author.is_correspondence:
-                                author.mail = email
-                        print(authors)
-                        '''
                         
+                        for email in emails:
+                            for author in authors:
+                                if author.mail == None:
+                                    author_name_parts = author.name.lower().split()
+                                    if any(part in email.lower() for part in author_name_parts):
+                                        author.mail = email
+                                        break
+                                else:
+                                    pass
+
+                                    
+
+                        '''
+                         for author in authors:
+                            if author.mail == None:
+                                author_name_parts = re.split(r'\s+', author.name.lower())  
+                                for email in emails:
+                                    email_lower = email.lower()
+                                    if any(part in email_lower for part in author_name_parts):
+                                        author.mail = email
+                                        break
+                            else:
+                                pass
+                        
+                        '''
+                       
+                       
                         print(authors)
                         print("email Names:", emails)
                         
