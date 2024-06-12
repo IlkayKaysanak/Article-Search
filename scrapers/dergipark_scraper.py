@@ -33,6 +33,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 # Scraper body chunks
 from common.helpers.methods.scraper_body_components import dergipark_components
+from ilkai_helper.get_doi_in_pdf import doi_from_pdf
 from ilkai_helper.get_email_in_pdf import emails_from_pdf
 from ilkai_helper.list_pdf import list_pdf_names
 from ilkai_helper.mail_and_author_map import map_emails_to_authors
@@ -538,6 +539,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                                                 f"{journal_name, recent_volume, recent_issue},"
                                                                 f" article num {i}."))
                         
+                        # Add Missing Email
                         pdf_names = list_pdf_names(download_path)
                         emails = emails_from_pdf(download_path+'/'+pdf_names)
                         
@@ -551,23 +553,17 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 else:
                                     pass
 
-                                    
+                        # Add Missing Doi                
+                        print(article_doi)
 
-                        '''
-                         for author in authors:
-                            if author.mail == None:
-                                author_name_parts = re.split(r'\s+', author.name.lower())  
-                                for email in emails:
-                                    email_lower = email.lower()
-                                    if any(part in email_lower for part in author_name_parts):
-                                        author.mail = email
-                                        break
-                            else:
-                                pass
-                        
-                        '''
+                        if article_doi == None:     
+                            print("Burdayım")
+                            pdf_names = list_pdf_names(download_path)       
+                            pdf_doi = doi_from_pdf(download_path+'/'+pdf_names)
+                            article_doi = pdf_doi
+                            print(pdf_doi)
                        
-                       
+
                         print(authors)
                         print("email Names:", emails)
                         
