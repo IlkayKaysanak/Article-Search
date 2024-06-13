@@ -563,11 +563,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             pdf_doi = doi_from_pdf(download_path+'/'+pdf_names)
                             article_doi = pdf_doi
                             print(pdf_doi)
-                       
-                        
-                        
-                        
-                        
+
                         # GET RESPONSE BODY OF THE AZURE RESPONSE
                         azure_article_data = None
                         if with_azure and location_header:
@@ -610,12 +606,22 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             "articleReferences": None,
                             "articleURL": article_url,
                             "temporaryPDF": ""}
-                        
+                        #references placement
                         if dergipark_references:
                             dergipark_references_p = ai_ref(json.dumps(dergipark_references,ensure_ascii=False))
-                            dergipark_references_c = dergipark_references_p.replace('\n', '').replace('```', '').strip()
-                            final_article_data["articleReferences"] = dergipark_references_c
+                            dergipark_references_p.strip().split('\n')
+                            dergipark_references_c = dergipark_references_p.replace('```', '').strip()
+                            lines = dergipark_references_c.split('\n')
+                            data = {}
+                            for line in lines:
+                                parts = line.split('. ', 1)
+                                if len(parts) == 2:
+                                    num = parts[0]
+                                    item = parts[1]
+                                    data[num] = item.strip()
+                            final_article_data["articleReferences"] = data
                                
+                            
                         elif with_adobe and adobe_references:
                             final_article_data["articleReferences"] = adobe_references
 

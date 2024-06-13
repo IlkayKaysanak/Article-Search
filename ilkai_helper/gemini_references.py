@@ -15,7 +15,7 @@ def ai_ref(ref):
     Örnek:
     Stephane A. Management of congenital cholesteatoma with otoendoscopic surgery: case report. Turkiye Klinikleri J Med Sci. 2010;30(2):803-7.
     """
-    promtRef = """Yukarda verdiğim bilgilere göre gelen referansları düzenleyebiliyorsan formatlarını düzenle, düzenleyecek bilgi yok ise olduğu haliyle bırak. Başlık yorum yapmadan bana sadece kaynakları listele. Sadece kaynakların dönmüş hali lazım bana. Ve Kendin herhangi bir şey sakın ekleme sadece formatını elindeki bilgilerle düzenle bilgi yoksa formatın o kısmı boş kalsın.Düzenlenmiyor ve hatalı ise de kaldırır mısın:
+    promtRef = """Yukarda verdiğim bilgilere göre gelen referansları düzenleyebiliyorsan formatlarını düzenle, düzenleyecek bilgi yok ise olduğu haliyle bırak. Başlık yorum yapmadan bana sadece kaynakları listele. Sadece kaynakların dönmüş hali lazım bana. Ve Kendin herhangi bir şey sakın ekleme sadece formatını elindeki bilgilerle düzenle bilgi yoksa formatın o kısmı boş kalsın.Düzenlenmiyor ve hatalı ise de kaldırır mısın.:
 """
     response = model.generate_content(atifRules+promtRef+ref)
     return response.text
