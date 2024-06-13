@@ -559,7 +559,6 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         print(article_doi)
 
                         if article_doi == None:     
-                            print("Burdayım")
                             pdf_names = list_pdf_names(download_path)       
                             pdf_doi = doi_from_pdf(download_path+'/'+pdf_names)
                             article_doi = pdf_doi
@@ -613,10 +612,10 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             "temporaryPDF": ""}
                         
                         if dergipark_references:
-                            dergipark_references_p = ai_ref(json.dumps(dergipark_references))
+                            dergipark_references_p = ai_ref(json.dumps(dergipark_references,ensure_ascii=False))
                             dergipark_references_c = dergipark_references_p.replace('\n', '').replace('```', '').strip()
                             final_article_data["articleReferences"] = dergipark_references_c
-                           
+                               
                         elif with_adobe and adobe_references:
                             final_article_data["articleReferences"] = adobe_references
 
