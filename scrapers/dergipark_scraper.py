@@ -33,6 +33,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 # Scraper body chunks
 from common.helpers.methods.scraper_body_components import dergipark_components
+from ilkai_helper.gemini_references import ai_ref
 from ilkai_helper.get_doi_in_pdf import doi_from_pdf
 from ilkai_helper.get_email_in_pdf import emails_from_pdf
 from ilkai_helper.list_pdf import list_pdf_names
@@ -564,7 +565,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             article_doi = pdf_doi
                             print(pdf_doi)
                        
-
+                        
                         
                         
                         
@@ -610,9 +611,12 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             "articleReferences": None,
                             "articleURL": article_url,
                             "temporaryPDF": ""}
-
+                        
                         if dergipark_references:
-                            final_article_data["articleReferences"] = dergipark_references
+                            dergipark_references_p = ai_ref(json.dumps(dergipark_references))
+                            dergipark_references_c = dergipark_references_p.replace('\n', '').replace('```', '').strip()
+                            final_article_data["articleReferences"] = dergipark_references_c
+                           
                         elif with_adobe and adobe_references:
                             final_article_data["articleReferences"] = adobe_references
 
@@ -635,7 +639,8 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         i += 1  # Loop continues with the next article
                         
                         clear_directory(download_path)
-
+                       
+                        
                         if is_test and i >= 2:
                             return 590
                     except Exception as e:
