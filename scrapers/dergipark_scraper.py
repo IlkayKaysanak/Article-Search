@@ -33,11 +33,13 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 # Scraper body chunks
 from common.helpers.methods.scraper_body_components import dergipark_components
+from ilkai_helper.gemini_pdf_ai import ai_ref2
 from ilkai_helper.gemini_references import ai_ref
 from ilkai_helper.get_doi_in_pdf import doi_from_pdf
 from ilkai_helper.get_email_in_pdf import emails_from_pdf
 from ilkai_helper.list_pdf import list_pdf_names
 from ilkai_helper.mail_and_author_map import map_emails_to_authors
+from ilkai_helper.pdf_converter import pdf_to_text
 from ilkai_helper.test_save import save_json_to_txt
 
 is_test = True
@@ -427,7 +429,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                         article_title_tr = element.text.strip()
                                 for element in abstract_elements:
                                     if element.text:
-                                        abstract_tr = abstract_formatter(element.find_element(By.TAG_NAME, 'p').text,
+                                        abstract_tr= abstract_formatter(element.find_element(By.TAG_NAME, 'p').text,
                                                                          "tr")
                                 for element in keywords_elements:
                                     if element.text:
@@ -448,7 +450,6 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                         for keyword in element.find_element(By.TAG_NAME, 'p').text.split(','):
                                             if keyword.strip() and keyword.strip() not in keywords_eng:
                                                 keywords_eng.append(keyword.strip())
-
                         # MULTIPLE LANGUAGE ARTICLES
                         elif article_lang_num == 2:
                             tr_article_element, article_title_tr, abstract_tr = dergipark_components.get_turkish_data(
@@ -540,8 +541,18 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                                                 f"{journal_name, recent_volume, recent_issue},"
                                                                 f" article num {i}."))
                         
-                        # Add Missing Email
+                        print("AI START")
                         pdf_names = list_pdf_names(download_path)
+                        # AI START
+                        pdf_text = pdf_to_text(download_path+'/'+pdf_names)
+                        pdf_gemini_data = ai_ref2(pdf_text)
+                        print(pdf_gemini_data)
+                        print(pdf_gemini_data[0]['journalName'])
+                        time.sleep(40)
+                        print(pdf_gemini_data)
+
+                        # Add Missing Email
+                        
                         emails = emails_from_pdf(download_path+'/'+pdf_names)
                         
                         for email in emails:
@@ -557,6 +568,8 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         print("email Names:", emails)                
                         # Add Missing Doi                
                         print(article_doi)
+                        abstract_tr = abstract_tr.replace("\n","")
+                        abstract_eng = abstract_eng.replace("\n","")
 
                         if article_doi == None:     
                             pdf_names = list_pdf_names(download_path)       
@@ -606,12 +619,13 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             "articleReferences": None,
                             "articleURL": article_url,
                             "temporaryPDF": ""}
+                        
+                        
                         #references placement
                         if dergipark_references:
                             dergipark_references_p = ai_ref(json.dumps(dergipark_references,ensure_ascii=False))
-                            dergipark_references_p.strip().split('\n')
-                            dergipark_references_c = dergipark_references_p.replace('```', '').strip()
-                            lines = dergipark_references_c.split('\n')
+                            lines = dergipark_references_p.split('\n')
+                            print(dergipark_references_p)
                             data = {}
                             for line in lines:
                                 parts = line.split('. ', 1)
@@ -620,6 +634,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                     item = parts[1]
                                     data[num] = item.strip()
                             final_article_data["articleReferences"] = data
+                            print(data)
                                
                             
                         elif with_adobe and adobe_references:

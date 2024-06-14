@@ -1,0 +1,793 @@
+ 
+13 
+ 
+ 
+ 
+Araştırma Makalesi 
+ 
+SPOR BİLİMLERİ ÖZEL YETENEK SINAVLARINA HAZIRLANAN 
+ADAYLARDA DURUMLUK VE SÜREKLİ KAYGININ İNCELENMESİ: 
+KOCAELİ ÖRNEĞİ 
+ 
+ 
+ 
+EXAMINATION OF STATE AND TRAIT ANXIETY IN CANDIDATES 
+PREPARING FOR SPECIAL TALENT EXAMS IN SPORT SCIENCES: 
+THE CASE OF KOCAELİ 
+ 
+ 
+Gönderilen Tarih: 05/01/2024  
+Kabul Edilen Tarih: 27/03/2024 
+ 
+ 
+ 
+Adem KARATUT 
+Milli Eğitim Bakanlığı, Kocaeli, Türkiye 
+Orcid: 0000-0003-1927-5656 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+* Sorumlu Yazar: Adem KARATUT, Milli Eğitim Bakanlığı, E-mail: ademkaratut4641@gmail.com 
+Karatut A. (2024). Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda Durumluk ve Sürekli Kaygının İncelenmesi: 
+Kocaeli Örneği. Beden Eğitimi ve Spor Bilimleri Dergisi. 18(1), 13-22. Doi: 10.61962/bsd.1415126 
+ 
+14 
+ 
+Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda 
+Durumluk ve Sürekli Kaygının İncelenmesi: Kocaeli Örneği 
+ 
+ÖZ 
+Bu araştırma yoğun bir sınav dönemi geçiren spor bilimleri özel yetenek sınavı adaylarının durumluk ve sürekli kaygı durumlarını 
+incelemeyi amaçlamıştır. Araştırmanın örneklem grubunu Kocaeli ilinde özel Yetenek Sınavlarına hazırlanarak Türkiye’nin çeşitli 
+illerinde sınava giren adaylar, evrenini ise Kocaeli ilinde sınava hazırlanan adaylar oluşturmaktadır. Ulaşılan katılımcı sayısı 
+213'tür. Araştırmada veri toplama araçları olarak, “Kişisel Bilgi Formu” ile Spielberger, Gorsuch ve Luschene (1970) tarafından 
+geliştirilen ve Öner ve Le Compte (1983) tarafından Türkçe’ye uyarlanan "Sürekli Kaygı Envanteri" kullanılmıştır. Verilerin analizi 
+SPSS 25.0 paket programı ile %95 güven aralığına göre yapılmıştır. Verilerin dağılımında basıklık çarpıklık katsayısına bakılmış, 
+verilerin ±2 arasında dağıldığı görülmüş ve verilerin normal dağıldığı tespit edilmiştir. Analizde frekans yüzde hesaplamaları, 
+Cronbach alpha katsayısı, üçten az kategorilerde t testi, ikiden fazla kategorilerde Anova analizi yapılmıştır. Katılımcıların 
+durumluk kaygılarının 2022 ve öncesi mezun olan öğrencilerin, 2022 sonrası mezun olan öğrencilere oranla daha iyi olduğu 
+sonucuna ulaşılmıştır. TYT puan aralıklarına bakıldığında TYT puanı yüksek olan öğrencilerin düşük olan öğrencilere oranla daha 
+az sürekli kaygıya sahip oldukları görülmektedir. Gelir durumu daha iyi olan grubun gelir durumu asgari ücret düzeyinde olan 
+gruba oranla sürekli kaygı düzeylerinin daha az olduğu sonucuna ulaşılmıştır.  
+ 
+Anahtar Kelimeler: Spor, spor bilimleri fakültesi, durumluk ve sürekli kaygı, özel yetenek sınavı 
+ 
+ 
+Examination of State and Trait Anxiety in Candidates Preparing for 
+Special Talent Exams in Sport Sciences: The Case of Kocaeli 
+ 
+ABSTRACT 
+This study aimed to examine the state and trait anxiety states of the candidates of the sports sciences special aptitude exams 
+who had an intensive exam period. The sample group of the research consists of the candidates who took the exam in various 
+provinces of Turkey by preparing for the special aptitude exam in Kocaeli province, and the population consists of all candidates 
+preparing for the exam in Kocaeli province. The number of participants reached was 213. "Personal Information Form" and "Trait 
+Anxiety Inventory" developed by Spielberger, Gorsuch and Luschene (1970) and adapted into Turkish by Öner and Le Compte 
+(1983) were used as data collection tools. The data were analysed with SPSS 25.0 package programme according to 95% 
+confidence interval. In the distribution of the data, the kurtosis skewness coefficient was examined and it was seen that the data 
+were distributed between ±2 and it was determined that the data were normally distributed. In the analysis, frequency percentage 
+calculations, Cronbach alpha coefficient, t test in categories less than three, and ANOVA analysis in categories more than two 
+were performed. It was concluded that the state anxiety of the participants was better for students who graduated in 2022 and 
+before than for students who graduated after 2022. Looking at the TYT score ranges, it is seen that students with high TYT scores 
+have less trait anxiety than students with low TYT scores. It was concluded that the group with better income status had lower 
+levels of trait anxiety than the group with minimum wage income. 
+  
+Keywords: Sport, faculty of sport sciences, state and trait anxiety, special talent examination 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Karatut A. (2024). Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda Durumluk ve Sürekli Kaygının İncelenmesi: 
+Kocaeli Örneği. Beden Eğitimi ve Spor Bilimleri Dergisi. 18(1), 13-22. Doi: 10.61962/bsd.1415126 
+ 
+15 
+ 
+GİRİŞ 
+Kaygı, insan doğasında var olan çevresel ve psikolojik olaylara verilen duygusal tepki 
+olarak tanımlanabilir1. Kaygı, sıkıntının neden olduğu gerginlik ve endişe durumudur. 
+Kaygı, rahatsızlık ve sinirlilik ile ayırt edilen negatif yüklü duygusal bir durumdur2. Öner 
+ve Le Compte, (1989)3, kaygıyı, durumluk kaygı ve sürekli kaygı olarak ikiye ayırmıştır. 
+Durumluk kaygı, "çevre koşullarından kaynaklanan bir stres nedeniyle çoğunlukla 
+mantıksal nedenlerle ortaya çıkan, nedenleri başkaları tarafından anlaşılabilen, 
+genellikle her bireyin yaşadığı, duruma bağlı geçici bir kaygı biçimi" olarak 
+tanımlanmaktadır. Sürekli kaygı "stresli durumun tehlikeli veya tehdit edici olarak 
+algılanması ve bu tehditlere karşı duygusal tepkilerin sıklık ve yoğunluğunun 
+yükselmesi ve devam etmesi" olarak tanımlanmaktadır4. 
+ 
+Kaygı, spor psikolojisi alanında sürekli çalışılan bir yapıdır ve fiziksel performansı 
+etkileyen psikolojik değişkenler arasından en çok araştırılan konulardan birisi haline 
+gelmiştir5. Spor ve kaygı arasında yakın bir ilişki vardır çünkü sporun doğası gereği 
+rekabetçi olduğunu, kazanmanın da kaybetmenin de sporun unsuru olduğunu 
+bilmekteyiz. Hangi spor oyunu veya yarışması olursa olsun, kişinin algılanan yeteneği 
+görevin gerekliliklerini yerine getiremediğinde kaygıya sebep olabilmektedir6. Kaygının 
+spordaki yeri çok önemlidir. Kaygıyı oluşturan şey spora katılımdaki zorluktur. 
+Sporcunun kaygıyla nasıl baş ettiği, ne kadar başarılı bir sonuç elde edeceğini belirler. 
+Kaygının derecesi de birçok farklı duruma göre değişir7. Kaygı, rahatsız bir zihin 
+durumu, duygusal tepkisellik anlamına gelir; uyarılma; sinirlilik; ve gerçekçi olmayan 
+ve nahoş bir ruh halini yansıtır. Kaygı, herhangi bir rekabet durumunun temel bir 
+bileşenidir ve belirli bir düzeyde kaygı olmadan rekabetçi performans olamaz. Ne çok 
+yüksek ne de çok düşük kaygı düzeyi sportif performans için iletken değildir. Yeterli 
+düzeyde kaygı en iyi sonuçları verir. Sporcular, kaygılarını yöneterek stresli rekabet 
+durumlarıyla başa çıkmayı öğrenmezlerse, amaçlarına ulaşamazlar8.  
+ 
+Anksiyetenin spor performansında hem psikolojik hem de fizyolojik etkileri vardır. 
+Örneğin, bir kez uyarıldığında, oyuncunun genel uyarılma seviyesini o kadar yükseltir 
+ki, sinir sistemi üzerindeki sürekli saldırı ve artan kaygı seviyesinin neden olduğu 
+gerginliği dağıtamaması nedeniyle oyununa konsantre olmakta zorlanır. Bilgi işleme 
+mekanizması aşırı strese girer ve bu da ortaya çıkan durumlara bile yanlış ya da yavaş 
+tepki verilmesine neden olur. Böyle bir durumda oyuncu odaklanamaz - bir şey yapmak 
+ister ama başka bir şey yapar. Bedeni ve zihni üzerindeki kontrolünü kaybeder8. 
+ 
+Özel yetenek sınavlarına hazırlanan adayların uzun süreli bir hazırlık döneminden 
+sonra sınava girecek olmaları adaylarda ne gibi bir kaygı düzeyine neden olduğu 
+merak edilen konular arasındadır. Alan yazın incelendiğinde daha çok öğrenim 
+sürecinde olan öğrencilere yönelik çalışmalar yer almaktayken, öğrenim hayatına 
+henüz başlamamış olan adayların kaygı durumları bu açıdan diğer çalışmalardan 
+farklılık göstermektedir. Kaygıya ilişkin veriler ele alınarak bu çalışmada Kocaeli ilinde 
+özel yetenek sınavlarına hazırlanarak Türkiye’nin çeşitli üniversitelerinin, Beden 
+Eğitimi ve Spor Yüksekokulları ile Spor Bilimleri Fakültelerinde özel yetenek 
+sınavlarına giren adayların durumluk ve sürekli kaygı durumlarının incelenmesi 
+amaçlanmıştır.  
+ 
+ 
+ 
+ 
+Karatut A. (2024). Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda Durumluk ve Sürekli Kaygının İncelenmesi: 
+Kocaeli Örneği. Beden Eğitimi ve Spor Bilimleri Dergisi. 18(1), 13-22. Doi: 10.61962/bsd.1415126 
+ 
+16 
+ 
+MATERYAL VE METOT 
+Katılımcılar 
+Araştırmanın evrenini Kocaeli’de 2023 yılında spor bilimleri fakültesi özel yetenek 
+sınavına hazırlanarak Türkiye’nin çeşitli üniversitelerinde sınava giren adaylar, 
+örneklemini ise bu adaylar içinden 110 erkek, 103 kadın olmak üzere 213 aday 
+oluşturmaktadır. 
+ 
+Tablo 1. Demografik Değişkenlere İlişkin Bulgular 
+Değişkenler 
+ 
+f 
+% 
+Cinsiyet 
+Erkek 
+110 
+51,6 
+Kadın 
+103 
+48,4 
+Yaş 
+18 yaş 
+115 
+54,0 
+19 yaş ve üstü 
+98 
+46,0 
+Mezuniyet Tarihi 
+2022 ve altı 
+91 
+42,7 
+2023 
+122 
+57,3 
+Temel Yetenek Testi  
+Puan Aralığı 
+150-200 
+70 
+32,9 
+201-250 
+91 
+42,7 
+251 ve üstü 
+52 
+24,4 
+Ailenin Gelir Durumu 
+Asgari Ücret Altı 
+11 
+5,2 
+Asgari Ücret 
+58 
+27,2 
+11.403-15.000 
+48 
+22,5 
+15.001 ve Üstü 
+96 
+45,1 
+Sporcu Lisansı Olma Durumu 
+Evet 
+66 
+31,0 
+Hayır 
+147 
+69,0 
+Özel Yetenek Sınavına Giriş Sayısı 
+1 Yıl 
+179 
+84,0 
+2 Yıl 
+34 
+16,0 
+ 
+Tablo 1’de katılımcıların demografik özelliklerinden elde edilen bilgilerden oluşturulan 
+kategorik değişkenine göre en yüksek gruplar sırasıyla cinsiyet değişkeninde erkek 
+katılımcılar (%51,6); yaş değişkenine göre 18 yaşında olan katılımcılar (%54); 
+mezuniyet tarihi değişkenine göre 2023 yılı mezunları  (%57,3); TYT puan aralığı 
+değişkenine göre 201-250 arası puan alan katılımcılar (%42,7); ailenin gelir durumu 
+değişkenine göre 15001 TL ve üstü gelir düzeyine sahip katılımcılar (%45,6); sporcu 
+lisansına sahip olma değişkenine göre lisansı olmayan katılımcılar (%59)    ve özel 
+yetenek sınavına giriş sayısı değişkenine göre sadece 1 yıl katılan katılımcılardan 
+oluşmaktadır (%84,4). 
+ 
+Veri Toplama Araçları 
+Araştırmada veri toplama araçları olarak, “Kişisel Bilgi Formu” ile Spielberger, Gorsuch 
+ve Luschene (1970)9 tarafından geliştirilen ve Öner ve Le Compte (1983)10 tarafından 
+Türkçe’ye uyarlanan "Sürekli Kaygı Envanteri" kullanılmıştır. Kişisel Bilgi Formunda 
+yaş, cinsiyet, lise mezuniyet yılı, TYT sınav puan aralığı, ailenin gelir düzeyi, lisanslı 
+sporcu olup olmadığı ve yetenek sınavlarına giriş sayısı soruları yer almaktadır. 
+ 
+Spielberger’in Sürekli-Durumluk Kaygı Envanteri 
+Spielberger’in Sürekli-Durumluk Kaygı Envanteri: Ölçek iki kısımdan oluşmaktadır. Biri 
+o anda hissedilenleri belirlemek amacıyla oluşturulan 20 maddelik “durumluk kaygı 
+formu” ve diğeri son haftada neler hissedildiğini belirlemek amacıyla oluşturulan 20 
+maddelik “sürekli kaygı formu”dur11. Durumluk Kaygı Ölçeği on adet tersine çevrilmiş 
+ifade içermektedir (1, 2, 5, 8, 10, 11, 15, 16, 19 ve 20. maddeler). Sürekli Kaygı 
+ölçeğindeki tersine çevrilmiş ifadelerin (1, 6, 7, 10, 13, 16, 19. maddeler) sayısı yedidir. 
+Doğrudan ve tersine çevrilmiş ifadelerin toplam puanı hesaplanır. Tersine çevrilmiş 
+Karatut A. (2024). Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda Durumluk ve Sürekli Kaygının İncelenmesi: 
+Kocaeli Örneği. Beden Eğitimi ve Spor Bilimleri Dergisi. 18(1), 13-22. Doi: 10.61962/bsd.1415126 
+ 
+17 
+ 
+ifadeler için toplam puan, doğrudan ifadeler için toplam puandan çıkarılır. Bu sayıya 
+önceden belirlenmiş, değişmeyen bir değer eklenir. Durumluk Kaygı Ölçeği için bu 
+değer 50'dir ve son değer bireyin kaygı puanıdır3. 
+ 
+Verilerin Toplanması 
+Araştırma için veriler; Muğla Sıtkı Koçman Üniversitesi, Sosyal ve Beşeri Bilimler 
+Araştırmaları Etik Kurulunun 05.09.2023 tarih ve 103 no’lu etik kurul raporu ile 05-15 
+Eylül 2023 tarihleri arasında katılımcılardan yüz yüze toplanmıştır. 
+ 
+Verilerin Analizi 
+Araştırmamızda verilerin analizi katılımcılardan elde edilen bilgiler doğrultusunda 
+SPSS programı ile yapılmıştır. Verilerin dağılımında basıklık çarpıklık katsayısına 
+bakılmış, verilerin ±2 arasında dağıldığı görülmüş ve verilerin normal dağıldığı tespit 
+edilmiştir. Analizde frekans yüzde hesaplamaları, Cronbach alpha katsayısı, üçten az 
+kategorilerde t testi, ikiden fazla kategorilerde manova analizi yapılmıştır. 
+ 
+ 
+BULGULAR 
+Tablo 2. Ölçeklere Ait Tanımlayıcı İstatistikler 
+Değişkenler 
+Cronbach  Alpha 
+x̄  
+Ss 
+Basıklık 
+Çarpıklık 
+Durumluk Kaygı 
+,90 
+45,46 
+6,46 
+-,163 
+1,784 
+Sürekli Kaygı 
+,81 
+47,58 
+6,82 
+,361 
+,768 
+ 
+Tablo 2’de ölçeklerden elde edilen tanımlayıcı istatistik sonuçlarına göre katılımcıların 
+sürekli kaygı düzeylerinin durumluk kaygı düzeylerine oranla daha yüksek düzeyde 
+olduğu görülmektedir. 
+ 
+Tablo 3. Katılımcıların Durumluk ve Sürekli Kaygı Düzeylerinin Cinsiyet Değişkenine 
+Göre T Testi Sonuçları 
+Boyutlar 
+Cinsiyet 
+N 
+X̅ 
+Ss 
+t 
+p 
+Durumluk Kaygı 
+Erkek 
+110 
+45,03 
+6,69 
+-1,010 
+,314 
+Kadın 
+103 
+45,93 
+6,21 
+Sürekli Kaygı 
+Erkek 
+110 
+47,10 
+7,16 
+-1,076 
+,283 
+Kadın 
+103 
+48,10 
+6,43 
+(p>0.05) 
+ 
+Tablo 3’te katılımcıların durumluk kaygı ve sürekli kaygı düzeyleri ile cinsiyet değişkeni 
+arasında yapılan t testi sonucu anlamlı farklılaşma olmadığı tespit edilmiştir (p>0.05). 
+ 
+Tablo 4. Katılımcıların Durumluk ve Sürekli Kaygı Düzeylerinin Yaş Değişkenine 
+Göre T Testi Sonuçları 
+Boyutlar 
+Yaş 
+N 
+X̅ 
+Ss 
+t 
+p 
+Durumluk Kaygı 
+18 yaş 
+115 
+44,7 
+6,56 
+-1,881 
+,061 
+19 yaş ve üstü 
+98 
+46,36 
+6,27 
+Sürekli Kaygı 
+18 yaş 
+115 
+48,11 
+6,76 
+1,220 
+,224 
+19 yaş ve üstü 
+98 
+46,96 
+6,87 
+(p>0.05) 
+ 
+Tablo 4’te katılımcıların durumluk kaygı ve sürekli kaygı düzeyleri ile yaş değişkeni 
+arasında yapılan t testi sonucu anlamlı farklılaşma olmadığı tespit edilmiştir (p>0.05). 
+ 
+Karatut A. (2024). Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda Durumluk ve Sürekli Kaygının İncelenmesi: 
+Kocaeli Örneği. Beden Eğitimi ve Spor Bilimleri Dergisi. 18(1), 13-22. Doi: 10.61962/bsd.1415126 
+ 
+18 
+ 
+Tablo 5. Katılımcıların Durumluk ve Sürekli Kaygı Düzeylerinin Mezuniyet Tarihi 
+Değişkenine Göre T-Testi Sonuçları 
+Boyutlar 
+Mezuniyet Yılı 
+N 
+X̅ 
+SS 
+t 
+p 
+Durumluk Kaygı 
+2022 ve öncesi 
+91 
+46,94 
+6,06 
+2,926 
+,004 
+2023 
+122 
+44,36 
+6,56 
+Sürekli Kaygı 
+2022 ve öncesi 
+91 
+47,45 
+7,07 
+-,251 
+,802 
+2023 
+122 
+47,68 
+6,66 
+(p>0.05) 
+ 
+Tablo 5’te araştırmaya katılanların durumluk kaygı ve sürekli kaygı düzeyleri ile 
+mezuniyet tarihi değişkeni arasında yapılan t testi sonucu durumluk kaygı boyutunda 
+2022 ve öncesi mezuniyete sahip katılımcılar lehine anlamlı farklılaşma olduğu 
+görülmektedir (t=2,926, p<0.05). 
+ 
+Tablo 6. Katılımcıların Durumluk ve Sürekli Kaygı Düzeylerinin TYT Puan Aralığı 
+Değişkenine Göre Manova Analizi Sonuçları 
+Boyutlar 
+TYT Sınav 
+Puan Aralığı 
+N 
+𝑋̅ 
+SS 
+F 
+p 
+Bonferroni 
+Durumluk Kaygı 
+150-200 
+70 
+45,80 
+6,76 
+,771 
+,464 
+- 
+201-250 
+91 
+44,84 
+6,049 
+251 ve üstü 
+52 
+46,11 
+6,798 
+Sürekli Kaygı 
+1150-200 
+70 
+48,77 
+6,138 
+4,431 
+,013 
+1>2 
+2201-250 
+91 
+46,00 
+6,862 
+3251 ve üstü 
+52 
+48,76 
+7,196 
+(p>0.05) 
+ 
+Tablo 6’da katılımcıların durumluk kaygı ve sürekli kaygı düzeyleri ile TYT puanı 
+değişkeni arasında yapılan Anova analizi sonucu sürekli kaygı boyutunda anlamlı 
+farklılaşma olduğu görülmüştür (p<0.05). Farkın neden kaynaklandığını belirlemek için 
+yapılan Bonferroni analizinde 150-200 puan aralığında olan katılımcıların sürekli kaygı 
+düzeylerinin 201-250 puan aralığındaki katılımcılardan yüksek olduğu tespit edilmiştir. 
+ 
+Tablo 7. Katılımcıların Durumluk ve Sürekli Kaygı Düzeylerinin Gelir Durumu Düzeyi 
+Değişkenine Göre Manova Analizi Sonuçları 
+Boyutlar 
+Ailenin Gelir Düzeyi (TL) 
+N 
+X̅ 
+SS 
+F 
+p 
+Bonferroni 
+Durumluk 
+Kaygı 
+Asgari Ücret Altı 
+11 
+42,90 
+7,81 
+1,692 
+,170 
+- 
+Asgari Ücret (11.402) 
+58 
+45,17 
+5,68 
+11.403-15.000 
+48 
+44,50 
+7,80 
+15.001 ve Üstü 
+96 
+46,42 
+5,93 
+Sürekli 
+Kaygı 
+1Asgari Ücret Altı 
+11 
+44,54 
+7,56 
+2,907 
+,036 
+3>2 
+2Asgari Ücret (11.402) 
+58 
+45,87 
+6,92 
+311.403-15.000 
+48 
+48,70 
+6,16 
+415.001 ve Üstü 
+96 
+48,40 
+6,79 
+(p>0.05) 
+ 
+Tablo 7’de katılımcıların durumluk kaygı ve sürekli kaygı düzeyleri ile ailenin gelir 
+durumu değişkeni arasında yapılan manova analizi sonucu sürekli kaygı boyutunda 
+anlamlı farklılaşma olduğu görülmüştür (p<0.05). Farkın neden kaynaklandığını 
+belirlemek için yapılan Bonferroni analizinde 11.403-15.000 aralığında aile geliri olan 
+katılımcıların sürekli kaygı düzeylerinin asgari ücret düzeyinde gelire sahip 
+katılımcılardan yüksek olduğu görülmektedir.  
+ 
+ 
+ 
+Karatut A. (2024). Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda Durumluk ve Sürekli Kaygının İncelenmesi: 
+Kocaeli Örneği. Beden Eğitimi ve Spor Bilimleri Dergisi. 18(1), 13-22. Doi: 10.61962/bsd.1415126 
+ 
+19 
+ 
+ 
+Tablo 8. Katılımcıların Durumluk ve Sürekli Kaygı Düzeylerinin Sporcu Lisansı Olma 
+Durumu Değişkenine Göre T Testi Sonuçları 
+Boyutlar 
+Lisans 
+N 
+X̅ 
+SS 
+t 
+p 
+Durumluk Kaygı 
+Evet 
+66 
+44,8 
+5,58 
+-,892 
+,373 
+Hayır 
+147 
+45,7 
+6,82 
+Sürekli Kaygı 
+Evet 
+66 
+46,9 
+6,44 
+-,905 
+,366 
+Hayır 
+147 
+47,8 
+6,99 
+(p>0.05) 
+ 
+Tablo 8’de katılımcıların durumluk kaygı ve sürekli kaygı düzeyleri ile sporcu lisansı 
+olma değişkeni arasında yapılan t testi sonucu anlamlı farklılaşma olmadığı tespit 
+edilmiştir (p>0.05). 
+ 
+Tablo 9. Katılımcıların Durumluk ve Sürekli Kaygı Düzeylerinin Özel Yetenek 
+Sınavına Girme Sayısı Durumu Değişkenine Göre T Testi Sonuçları 
+Boyutlar 
+Sayı 
+N 
+X̅ 
+SS 
+t 
+p 
+Durumluk Kaygı 
+Bir Kez 
+179 
+45,30 
+6,51 
+,868 
+,386 
+İki Kez 
+34 
+46,35 
+6,26 
+Sürekli Kaygı 
+Bir Kez 
+179 
+47,66 
+6,74 
+,382 
+,703 
+İki Kez 
+34 
+47,17 
+7,32 
+(p>0.05) 
+ 
+Tablo 9’da katılımcıların durumluk kaygı ve sürekli kaygı düzeyleri ile özel yetenek 
+sınavına girme sayısı değişkeni arasında yapılan t testi sonucu anlamlı farklılaşma 
+olmadığı tespit edilmiştir (p>0.05). 
+ 
+ 
+TARTIŞMA  
+Durumluk ve sürekli kaygı düzeyleri üzerinde cinsiyet değişkeninin etkisinin olmadığı 
+sonucuna ulaşılmıştır. Durumluk ve sürekli kaygının her iki cinsiyete de eşit bir şekilde 
+etki ettiği söylenebilir. Çalışmaya paralel olarak; Özbekçi (1990)12, Erbaş (2000)13, 
+Artok (1994)14, Karabulut ve Mavi-Var (2019)15, Görün ve ark. (2020)16 çalışmalarında 
+cinsiyetin durumluk ve sürekli kaygı düzeylerine etkisinin olmadığı sonucuna 
+ulaşmışlardır. Çalışmanın aksine; Chun ve ark. (2022)17, Dönmez (2013)18, González-
+Hernández ve ark. (2020)19, Hacıcaferoğlu ve ark. (2015)20, Var ve ark. (2018)21 
+çalışmalarında 
+cinsiyetin 
+durumluk 
+ve 
+sürekli 
+kaygıya 
+etkisinin 
+olduğunu 
+aktarmışlardır. 
+ 
+Katılımcıların durumluk kaygı ve sürekli kaygı seviyeleri ile yaş değişkeni arasında 
+yapılan t testi sonucu anlamlı farklılaşma olmadığı tespit edilmiştir. Ancak katılımcıların 
+durumluk kaygı puanları 18 yaşındaki katılımcılar için 19 ve üstü yaşındaki katılımcılara 
+göre daha düşük olduğu ortaya çıkmıştır. Sürekli kaygı puanlarında ise 18 yaşında 
+olan katılımcıların 19 ve üstü yaşında olan katılımcılara oranla daha yüksek seviyede 
+olduğu bulunmuştur. Bu duruma daha büyük yaşta olan katılımcıların kaygı 
+kontrollerinin yaş ile orantılı olarak daha iyi olmasının sebep olduğu söylenebilir. 
+Çalışmamıza parelel olarak; Yücel (2003)22, Civan ve ark. (2010)23, Macila (2013)24, 
+Karabulut ve Mavi-Var (2019)15 çalışmalarında durumluk veya sürekli kaygı 
+durumlarına yaş değişkeninin herhangi bir etkisinin olmadığı sunucuna ulaşmıştır. 
+ 
+ 
+Karatut A. (2024). Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda Durumluk ve Sürekli Kaygının İncelenmesi: 
+Kocaeli Örneği. Beden Eğitimi ve Spor Bilimleri Dergisi. 18(1), 13-22. Doi: 10.61962/bsd.1415126 
+ 
+20 
+ 
+Katılımcıların durumluk kaygılarının 2022 ve öncesi mezun olan öğrencilerin, 2022 
+sonrası mezun olan öğrencilere oranla daha iyi olduğu sonucuna ulaşılmıştır. Bu 
+durumun temel nedeninin mezuniyet yılı gereği adayların daha fazla eleme gerektiren 
+sınavlara katılması olduğu düşünülebilir. 
+ 
+TYT puan aralıklarına bakıldığında TYT puanı yüksek olan öğrencilerin düşük olan 
+öğrencilere oranla daha az sürekli kaygıya sahip oldukları görülmektedir. Bu durumun 
+temel nedeninin özel yetenek sınavlarında TYT puanının yüksek etkisinin olması 
+gösterilebilir. TYT puanı yüksek olan öğrenci özel yetenek sınavından düşük derece 
+yapmasının olumsuz etkisini daha az hissedecek ve yerleştirme puanında TYT 
+puanının yüksek olmasının avantajını kullanacaktır. 
+ 
+Gelir durumu düzeyine bakıldığında; gelir durumu daha iyi olan grubun gelir durumu 
+asgari ücret düzeyinde olan gruba oranla sürekli kaygı düzeylerinin daha düşük 
+seviyede olduğu sonucuna ulaşılmıştır. Bu durumun nedeninin gelir düzeyi düşük olan 
+katılımcıların sınavı kaybetme endişesini ortaya çıkarması ve aynı sınav ve hazırlıklara 
+tekrar katılmasının ekonomik anlamda kendisini zor durumda bırakacağı kaygısı 
+olduğu düşünülebilir. Öntürk ve ark. (2019)25 ’un çalışmalarında bulduğu gelir durumu 
+düşük bireylerin durumluk kaygı düzeylerinin gelir durumu yüksek bireylerden daha 
+düşük olduğu sonucuyla paralellik göstermektedir. Çalışmamızın aksine; Oktay ve 
+Yıldız, (2018)26 gelir düzeyi yüksek olan kişilerin durumluk ve sürekli kaygılarının gelir 
+durumu düşük düzeyde olanlara göre daha düşük olduğu sonucuna ulaşmıştır. 
+ 
+Herhangi bir branştan sporcu lisansına sahip olma değişkeninin durumluk ve sürekli 
+kaygı düzeyi üzerinde etkisinin olmadığı sonucuna ulaşılmıştır. Aktif olarak bir spor 
+branşında yarışan sporcu kaybettiği müsabakanın telafisinin sonraki müsabakalarda 
+yapabilir ancak; eğitim hayatı için önemli olan bu sınavda kaybetmek bir yıl kaybına 
+sebep olacaktır. Bu sebeple adaylar sınav için eşit kaygı düzeyine sahiptirler. Bu durum 
+sonucun nedeni olarak gösterilebilir. Yetenek sınavına girme sayısının da adayların 
+durumluk ve sürekli kaygı düzeyleri üzerinde etkisinin olmadığı sonucuna ulaşılmıştır.  
+ 
+Sonuç olarak; sınav tecrübesi olan adayların sınava ilk kez girecek adaylara oranla 
+kaygı düzeylerinin daha iyi seviyede olduğu, TYT sınav puanı yüksek olan adayların 
+sınav puanı düşük olan adaylara oranla sürekli kaygı düzeylerinin daha iyi seviyede 
+olduğu, gelir durumu yüksek olan adayların gelir durumu düşük olan adaylara oranla 
+sürekli kaygı düzeylerinin daha iyi seviyede olduğu bulunmuştur. 
+ 
+Öneriler: Çalışma farklı illeri de kapsayacak şekilde genişletilerek yapılabilir. Sınava 
+girilen üniversitelerin sınav yöntemleri de eklenerek çeşitlendirilebilir.  
+ 
+ 
+KAYNAKLAR 
+1. 
+Babaroğlu A. (2004). Lösemi hastası olan çocukların ve annelerinin umutsuzluk 
+düzeyleri ile annelerin kaygı düzeyleri arasındaki ilişkinin incelenmesi. Doktora 
+Tezi, Ankara Üniversitesi Fen Bilimleri Enstitüsü. Ankara. 
+2. 
+Khan Z., Haider Z., Ahmad N., Khan S. (2011). Sports achievement motivation 
+and sports competition anxiety: A relationship study. Journal of Education and 
+Practice. 2(4), 1-5. 
+3. 
+Öner N., Le Compte A. (1998). Süreksiz durumluk sürekli kaygı envanteri el 
+kitabı. Boğaziçi Üniversitesi Yayınevi. İstanbul. 
+Karatut A. (2024). Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda Durumluk ve Sürekli Kaygının İncelenmesi: 
+Kocaeli Örneği. Beden Eğitimi ve Spor Bilimleri Dergisi. 18(1), 13-22. Doi: 10.61962/bsd.1415126 
+ 
+21 
+ 
+4. 
+Özgüven İE. (1999). Psikolojik testler. PDREM Yayınları. Ankara. 
+5. 
+Cox RH. (1998). Sport psychology: concepts and applications. McGraw-Hill. 
+6. 
+Simon JA., Martens R. (1977). SCAT as a predictor of A-states in varying 
+competitive situations. Psychology of Motor Behaviour and Sport. 2, 146-156. 
+7. 
+Khan MK., Khan A., Khan SU., Khan S. (2017). Effects of anxiety on athletic 
+performance. Research Investigations in Sports Medicine. 1(1), 1-5. 
+8. 
+Bali A. (2015). Psychological factors affecting sports performance. International 
+Journal of Physical Education Sports and Health. 1(6), 92-95. 
+9. 
+Spıelberger CD., Gorsuch RC., Luschene RE. (1970). Manual for the state-trait 
+anxiety invenntory. Consulting Psychologists Press. California. 
+10. Öner NLCA., Le Compte A. (1983). Durumluluk-sürekli kaygı envanteri elkitabı. 
+Boğazici Üniversitesi Matbaasι. İstanbul. 
+11. Bedir R. (2008). Taekwondo mili takım sporcularının durumluk kaygı düzeylerinin 
+başarıya etkisi. Yüksek Lisans Tezi. Selçuk Üniversitesi Sağlık Bilimleri 
+Enstitüsü. Konya. 
+12. Özbekçi F. (1990). Farklı spor dallarında yaşanan spor müsabaka stres 
+düzeylerinin araştırılması. I Spor Bilimleri Kongresi Bildirileri. Ankara. 154-158.  
+13. Erbaş M. (2000). Türkiye basketbol 2. erkekler ligindeki oyuncuların bazı kişisel 
+değişkenlerinin durumluk kaygı üzerine etkileri ve durumluk kaygının takım içi 
+ilişkilerine etkisinin araştırılması. Yüksek Lisans Tezi, Trakya Üniversitesi Sağlık 
+Bilimleri Enstitüsü. Edirne. 
+14. Artok F. (1994). Üniversiteler arası basketbol müsabakalarına katılan 
+basketbolcuların maç öncesi durumluk kaygı düzeylerini performanslarına etkisi. 
+Yüksek Lisans Tezi, Çukurova Üniversitesi Sosyal Bilimler Enstitüsü. Adana. 
+15. Karabulut EO., Sevde MV. (2019). Taekwondocuların durumluk ve sürekli 
+kaygılarının müsabaka performansı ve yaralanma durumu ile ilişkisi. Türk Spor 
+Bilimleri Dergisi. 2(1), 47-54. 
+16. Görün L., Efek E., Öntürk Y., Bingöl E. (2020). Futbol hakemlerinin sürekli kaygı 
+düzeylerinin incelenmesi. Turkish Studies-Social. 15(5), 2529-2541. 
+17. Chun DR., Lee MY., Kim SW., Cho EY., Lee BH. (2022). The mediated effect of 
+sports confidence on competitive state anxiety and perceived performance of 
+basketball game. International Journal of Environmental Research and Public 
+Health. 20(1), 334. 
+18. Dönmez KH. (2013). Samsun ilinde yapılan üniversiteler arası basketbol 
+müsabakalarına katılan sporcuların durumluk kaygı ve sürekli kaygı düzeylerinin 
+incelenmesi. The Journal of Academic Social Science Studies. 6 (5), 243-248. 
+19. González-Hernández J., Gomariz-Gea M., Valero-Valenzuela A., Gómez-López 
+M. (2020). Resilient resources in youth athletes and their relationship with anxiety 
+in different team sports. International Journal of Environmental Research and 
+Public Health. 17(15), 5569. 
+20. Hacıcaferoğlu S., Hacıcaferoğlu B., Seçer M. (2015). Halk oyunları branşına 
+katılan sporcuların yarışma öncesi kaygı düzeylerinin bazı değişkenler açısından 
+incelenmesi. International Journal of Science Culture And Sport. 3(4), 288-297. 
+21. Var L., Karabulut EO., Atasoy M. (2018). Examination of social appearance 
+anxiety levels of senior taekwondo athletes studying at university. International 
+Journal of Eurasia Social Sciences. 9(33), 1434-1451. 
+22. Yücel EO. (2003). Taekwondocuların durumluk ve sürekli kaygı düzeyleri ve 
+müsabakalardaki başarılarına etkisi. Yüksek Lisans Tezi, Gazi Üniversitesi Sağlık 
+Bilimleri Enstitüsü. Ankara. 
+Karatut A. (2024). Spor Bilimleri Özel Yetenek Sınavlarına Hazırlanan Adaylarda Durumluk ve Sürekli Kaygının İncelenmesi: 
+Kocaeli Örneği. Beden Eğitimi ve Spor Bilimleri Dergisi. 18(1), 13-22. Doi: 10.61962/bsd.1415126 
+ 
+22 
+ 
+23. Civan A., Arı R., Görücü A., Özdemir M. (2010). Bireysel ve takım sporcularının 
+müsabaka öncesi ve sonrası durumluk ve sürekli kaygı düzeylerinin 
+karşılaştırılması. Uluslararası İnsan Bilimleri Dergisi. 7(1), 193-206. 
+24. Macila E. (2013). Basketbol oyuncularının durumluk ve sürekli kaygı düzeylerinin 
+belirlenmesi. Yüksek Lisans Tezi, Yakın Doğu Üniversitesi Sağlık Bilimleri 
+Enstitüsü. Lefkoşa. KKTC. 
+25. Öntürk Y., İmamoğlu O., Karacabey K. (2019). Elit tekvandocularda durumluk ve 
+sürekli kaygının araştırılması. Manas Sosyal Araştırmalar Dergisi. 8(4), 3764-
+3774. 
+26. Oktay MC., Yıldız M. (2018). İlk defa deneme dalışı yapan bireylerin sürekli ve 
+durumluk kaygı düzeylerinin çeşitli değişkenlere göre incelenmesi 1.  Kafkas 
+Üniversitesi. Sosyal Bilimler Enstitüsü Dergisi. 21, 161-168. 
+  
