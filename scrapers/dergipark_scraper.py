@@ -546,10 +546,15 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         # AI START
                         pdf_text = pdf_to_text(download_path+'/'+pdf_names)
                         pdf_gemini_data = ai_ref2(pdf_text)
-                        print(pdf_gemini_data)
+                       
                         print(pdf_gemini_data[0]['journalName'])
-                        time.sleep(40)
-                        print(pdf_gemini_data)
+                        print(pdf_gemini_data[0]['articleType'])
+                        print(pdf_gemini_data[0]['articleDOI'])
+                        print(pdf_gemini_data[0]['articleCode'])
+                        print(pdf_gemini_data[0]['articleYear'])
+                        print(pdf_gemini_data[0]['articleVolume'])
+                        
+                        
 
                         # Add Missing Email
                         
@@ -601,13 +606,13 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                        f":{article_page_range[0]}-{article_page_range[1]}"
 
                         final_article_data = {
-                            "journalName": f"{journal_name}",
-                            "articleType": article_type if article_type else None,
-                            "articleDOI": article_doi if article_doi else None,
-                            "articleCode": article_code if article_code else None,
-                            "articleYear": article_year,
-                            "articleVolume": recent_volume,
-                            "articleIssue": recent_issue,
+                            "journalName": pdf_gemini_data[0]['journalName'],
+                            "articleType": pdf_gemini_data[0]['articleType'] if pdf_gemini_data[0]['articleType'] else None,
+                            "articleDOI": pdf_gemini_data[0]['articleDOI'] if pdf_gemini_data[0]['articleDOI'] else None,
+                            "articleCode": pdf_gemini_data[0]['articleCode'] if pdf_gemini_data[0]['articleCode'] else None,
+                            "articleYear": pdf_gemini_data[0]['articleYear'],
+                            "articleVolume": pdf_gemini_data[0]['articleVolume'],
+                            "articleIssue": pdf_gemini_data[0]['articleIssue'],
                             "articlePageRange": article_page_range,
                             "articleTitle": {"TR": article_title_tr if article_title_tr else None,
                                              "ENG": article_title_eng if article_title_eng else None},
@@ -615,11 +620,12 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                                  "ENG": abstract_eng if abstract_eng else None},
                             "articleKeywords": {"TR": keywords_tr if keywords_tr else None,
                                                 "ENG": keywords_eng if keywords_eng else None},
-                            "articleAuthors": Author.author_to_dict(authors) if authors else None,
-                            "articleReferences": None,
+                            "articleAuthors": pdf_gemini_data[0]['articleAuthors'] if pdf_gemini_data[0]['articleAuthors'] else None,
+                            "articleReferences": pdf_gemini_data[0]['articleReferences'],
                             "articleURL": article_url,
                             "temporaryPDF": ""}
                         
+                        '''
                         
                         #references placement
                         if dergipark_references:
@@ -639,7 +645,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             
                         elif with_adobe and adobe_references:
                             final_article_data["articleReferences"] = adobe_references
-
+                        '''
                         if azure_article_data:
                             if azure_article_data.get("article_keywords", None):
                                 if azure_article_data["article_keywords"].get("tr", None) and not final_article_data["articleKeywords"]["TR"]:
