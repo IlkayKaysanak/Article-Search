@@ -540,22 +540,10 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 send_notification(DownloadError(f"Download was not finished in time, "
                                                                 f"{journal_name, recent_volume, recent_issue},"
                                                                 f" article num {i}."))
-                        
-                        print("AI START")
                         pdf_names = list_pdf_names(download_path)
                         # AI START
                         pdf_text = pdf_to_text(download_path+'/'+pdf_names)
                         pdf_gemini_data = ai_ref2(pdf_text)
-                       
-                        print(pdf_gemini_data[0]['journalName'])
-                        print(pdf_gemini_data[0]['articleType'])
-                        print(pdf_gemini_data[0]['articleDOI'])
-                        print(pdf_gemini_data[0]['articleCode'])
-                        print(pdf_gemini_data[0]['articleYear'])
-                        print(pdf_gemini_data[0]['articleVolume'])
-                        
-                        
-
                         # Add Missing Email
                         
                         emails = emails_from_pdf(download_path+'/'+pdf_names)
@@ -569,10 +557,8 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                         break
                                 else:
                                     pass
-                        print(authors)
-                        print("email Names:", emails)                
+                                       
                         # Add Missing Doi                
-                        print(article_doi)
                         abstract_tr = abstract_tr.replace("\n","")
                         abstract_eng = abstract_eng.replace("\n","")
 
@@ -580,7 +566,33 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             pdf_names = list_pdf_names(download_path)       
                             pdf_doi = doi_from_pdf(download_path+'/'+pdf_names)
                             article_doi = pdf_doi
-                            print(pdf_doi)
+                            
+                        
+                        for article in pdf_gemini_data[0]['articleReferences']:
+                            for key, value in article.items():
+                                if isinstance(value, str):
+                                    article[key] = value.replace('\n', '')
+
+                        
+                        article_references = pdf_gemini_data[0]['articleReferences']
+                        merged_references = []
+                        
+
+                        no_ref = 0
+
+                        def safe_str(value):
+                            return "" if value is None else value
+
+                        for ref in article_references:
+                            if safe_str(ref['Authors']) and safe_str(ref['Article Title']) and safe_str(ref['Journal Name']) and safe_str(ref['Year']) and safe_str(ref['Cilt']) and safe_str(ref['Issue']) and safe_str(ref['Page Numbers']):
+                                merged_ref = f"{safe_str(ref['Authors'])}. {safe_str(ref['Article Title'])}. {safe_str(ref['Journal Name'])}. {safe_str(ref['Year'])};{safe_str(ref['Cilt'])}{safe_str(ref['Issue'])}:{safe_str(ref['Page Numbers'])}."
+                                merged_references.append(merged_ref)
+                            else:
+                                no_ref = 1
+
+                        if no_ref == 1:
+                            print(f"{pdf_gemini_data[0]['journalName']} derginin {pdf_gemini_data[0]['articleTitle']['TR']} makalalesinde kaynaklarda eksik var")
+                            no_ref = 0
 
                         # GET RESPONSE BODY OF THE AZURE RESPONSE
                         azure_article_data = None
@@ -606,7 +618,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                        f":{article_page_range[0]}-{article_page_range[1]}"
 
                         final_article_data = {
-                            "journalName": pdf_gemini_data[0]['journalName'],
+                            "journalName": journal_name,
                             "articleType": pdf_gemini_data[0]['articleType'] if pdf_gemini_data[0]['articleType'] else None,
                             "articleDOI": pdf_gemini_data[0]['articleDOI'] if pdf_gemini_data[0]['articleDOI'] else None,
                             "articleCode": pdf_gemini_data[0]['articleCode'] if pdf_gemini_data[0]['articleCode'] else None,
@@ -614,8 +626,8 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             "articleVolume": pdf_gemini_data[0]['articleVolume'],
                             "articleIssue": pdf_gemini_data[0]['articleIssue'],
                             "articlePageRange": article_page_range,
-                            "articleTitle": {"TR": article_title_tr if article_title_tr else None,
-                                             "ENG": article_title_eng if article_title_eng else None},
+                            "articleTitle": {"TR": pdf_gemini_data[0]['articleTitle']['TR'] if pdf_gemini_data[0]['articleTitle']['TR'] else None,
+                                             "ENG": pdf_gemini_data[0]['articleTitle']['ENG'] if pdf_gemini_data[0]['articleTitle']['ENG'] else None},
                             "articleAbstracts": {"TR": abstract_tr if abstract_tr else None,
                                                  "ENG": abstract_eng if abstract_eng else None},
                             "articleKeywords": {"TR": keywords_tr if keywords_tr else None,
@@ -623,6 +635,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             "articleAuthors": pdf_gemini_data[0]['articleAuthors'] if pdf_gemini_data[0]['articleAuthors'] else None,
                             "articleReferences": pdf_gemini_data[0]['articleReferences'],
                             "articleURL": article_url,
+                            "mergedReferences" : merged_references,
                             "temporaryPDF": ""}
                         
                         '''
