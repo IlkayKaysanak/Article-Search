@@ -586,6 +586,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         for ref in article_references:
                             if safe_str(ref['Authors']) and safe_str(ref['Article Title']) and safe_str(ref['Journal Name']) and safe_str(ref['Year']) and safe_str(ref['Cilt']) and safe_str(ref['Issue']) and safe_str(ref['Page Numbers']):
                                 merged_ref = f"{safe_str(ref['Authors'])}. {safe_str(ref['Article Title'])}. {safe_str(ref['Journal Name'])}. {safe_str(ref['Year'])};{safe_str(ref['Cilt'])}{safe_str(ref['Issue'])}:{safe_str(ref['Page Numbers'])}."
+                                merged_ref = merged_ref.replace('..', '.')
                                 merged_references.append(merged_ref)
                             else:
                                 no_ref = 1
