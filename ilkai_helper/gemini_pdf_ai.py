@@ -28,13 +28,13 @@ def ai_ref2(text):
                                                 "email": 
                                                 },
                             "articleReferences": [ {
-                                                "Authors":,
-                                                "Article Title": ,
-                                                "Journal Name":,
-                                                "Year":,
+                                                "Yazarlar":,
+                                                "Makale İsmi": ,
+                                                "Dergi İsmi":,
+                                                "Yıl":,
                                                 "Cilt":,
-                                                "Issue":,
-                                                "Page Numbers":
+                                                "Sayı":,
+                                                "Sayfa No":
                                             },],
                             "mergedReferences":,                
                             "articleURL": ,
