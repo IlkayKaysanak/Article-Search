@@ -567,7 +567,10 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             pdf_doi = doi_from_pdf(download_path+'/'+pdf_names)
                             article_doi = pdf_doi
                             
-                        
+                        pdf_gemini_data[0]['articleTitle']['TR'] = pdf_gemini_data[0]['articleTitle']['TR'].replace('\n', '')
+                        pdf_gemini_data[0]['articleTitle']['ENG'] = pdf_gemini_data[0]['articleTitle']['ENG'].replace('\n', '')
+
+
                         for article in pdf_gemini_data[0]['articleReferences']:
                             for key, value in article.items():
                                 if isinstance(value, str):
@@ -589,12 +592,26 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 merged_ref = merged_ref.replace('..', '.')
                                 merged_references.append(merged_ref)
                             else:
-                                merged_ref = f"{safe_str(ref['Yazarlar'])}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {safe_str(ref['Yıl'])};{safe_str(ref['Cilt'])}{safe_str(ref['Sayı'])}:{safe_str(ref['Sayfa No'])}."
+                                yil = safe_str(ref['Yıl'])
+                                sayi = safe_str(ref['Sayı'])
+                                sayfa_no = safe_str(ref['Sayfa No'])
+
+                                sayi_formatted = f"{sayi}:" if sayi else ""
+                                sayfa_no_formatted = f"{sayfa_no}." if sayfa_no else ""
+                                yil_formatted = f"{yil};"
+                                if safe_str(ref['Sayı']) or safe_str(ref['Sayfa No']):
+                                    cilt = f"{safe_str(ref['Cilt'])},"
+                                else:
+                                    cilt = f"{safe_str(ref['Cilt'])}"
+
+
+                                merged_ref = f"{safe_str(ref['Yazarlar'])}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {yil_formatted}{cilt}{sayi_formatted}{sayfa_no_formatted}"
                                 merged_ref = merged_ref.replace('..', '.')
                                 merged_references.append(merged_ref)
                                 no_ref = 1
 
                         if no_ref == 1:
+                            print("Kaynakçada hata var düzeltin maili yollanabilir !!!!!")
                             no_ref = 0
 
                         # GET RESPONSE BODY OF THE AZURE RESPONSE
