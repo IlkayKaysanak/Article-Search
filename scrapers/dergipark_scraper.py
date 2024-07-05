@@ -587,25 +587,32 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             return "" if value is None else value
             
                         def only_number(input_str):
-                            p_number = ''.join(filter(str.isdigit, input_str))
+                            p_number = ''.join(filter(lambda x: x.isdigit() or x == '-', input_str))
                             return p_number
 
                         for ref in article_references:
 
                             sayfa_no = safe_str(ref['Sayfa No'])
                             sayfa_no = only_number(sayfa_no)
+                            
 
                             if not safe_str(ref['Yazarlar']) and safe_str(ref['Makale İsmi']) and safe_str(ref['Dergi İsmi']) and safe_str(ref['Yıl']) and safe_str(ref['Cilt']) and safe_str(ref['Sayı']) and safe_str(ref['Sayfa No']):
-                                continue
+                                continue        
 
                             if safe_str(ref['Yazarlar']) and safe_str(ref['Makale İsmi']) and safe_str(ref['Dergi İsmi']) and safe_str(ref['Yıl']) and safe_str(ref['Cilt']) and safe_str(ref['Sayı']) and safe_str(ref['Sayfa No']):
-                                
-                                merged_ref = f"{safe_str(ref['Yazarlar'])}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {safe_str(ref['Yıl'])};{safe_str(ref['Cilt'])}({safe_str(ref['Sayı'])}):{sayfa_no}."
+                                sayi = safe_str(ref['Sayı'])
+                                sayi = only_number(sayi)
+                                yazarlar = safe_str(ref['Yazarlar'])
+                                yazarlar = yazarlar.replace('\u202f', '.')
+                                merged_ref = f"{yazarlar}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {safe_str(ref['Yıl'])};{safe_str(ref['Cilt'])}({sayi}):{sayfa_no}."
                                 merged_ref = merged_ref.replace('..', '.')
                                 merged_references.append(merged_ref)
                             else:
                                 yil = safe_str(ref['Yıl'])
                                 sayi = safe_str(ref['Sayı'])
+                                sayi = only_number(sayi)
+                                yazarlar = safe_str(ref['Yazarlar'])
+                                yazarlar = yazarlar.replace('\u202f','')
 
 
                                 sayi_formatted = f"{sayi}:" if sayi else ""
@@ -617,7 +624,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                     cilt = f"{safe_str(ref['Cilt'])}"
 
 
-                                merged_ref = f"{safe_str(ref['Yazarlar'])}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {yil_formatted}{cilt}{sayi_formatted}{sayfa_no_formatted}"
+                                merged_ref = f"{yazarlar}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {yil_formatted}{cilt}{sayi_formatted}{sayfa_no_formatted}"
                                 merged_ref = merged_ref.replace('..', '.')
                                 merged_references.append(merged_ref)
                                 no_ref = 1
