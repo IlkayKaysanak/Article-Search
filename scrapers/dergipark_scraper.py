@@ -585,16 +585,28 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
 
                         def safe_str(value):
                             return "" if value is None else value
+            
+                        def only_number(input_str):
+                            p_number = ''.join(filter(str.isdigit, input_str))
+                            return p_number
 
                         for ref in article_references:
+
+                            sayfa_no = safe_str(ref['Sayfa No'])
+                            sayfa_no = only_number(sayfa_no)
+
+                            if not safe_str(ref['Yazarlar']) and safe_str(ref['Makale İsmi']) and safe_str(ref['Dergi İsmi']) and safe_str(ref['Yıl']) and safe_str(ref['Cilt']) and safe_str(ref['Sayı']) and safe_str(ref['Sayfa No']):
+                                continue
+
                             if safe_str(ref['Yazarlar']) and safe_str(ref['Makale İsmi']) and safe_str(ref['Dergi İsmi']) and safe_str(ref['Yıl']) and safe_str(ref['Cilt']) and safe_str(ref['Sayı']) and safe_str(ref['Sayfa No']):
-                                merged_ref = f"{safe_str(ref['Yazarlar'])}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {safe_str(ref['Yıl'])};{safe_str(ref['Cilt'])}({safe_str(ref['Sayı'])}):{safe_str(ref['Sayfa No'])}."
+                                
+                                merged_ref = f"{safe_str(ref['Yazarlar'])}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {safe_str(ref['Yıl'])};{safe_str(ref['Cilt'])}({safe_str(ref['Sayı'])}):{sayfa_no}."
                                 merged_ref = merged_ref.replace('..', '.')
                                 merged_references.append(merged_ref)
                             else:
                                 yil = safe_str(ref['Yıl'])
                                 sayi = safe_str(ref['Sayı'])
-                                sayfa_no = safe_str(ref['Sayfa No'])
+
 
                                 sayi_formatted = f"{sayi}:" if sayi else ""
                                 sayfa_no_formatted = f"{sayfa_no}." if sayfa_no else ""
@@ -611,7 +623,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 no_ref = 1
 
                         if no_ref == 1:
-                            print("Kaynakçada hata var düzeltin maili yollanabilir !!!!!")
+                            #TODO mail sistemi ile kaynakçanın hatalı olduğu bilgisi verilebilir!
                             no_ref = 0
 
                         # GET RESPONSE BODY OF THE AZURE RESPONSE
@@ -700,7 +712,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         clear_directory(download_path)
                        
                         
-                        if is_test and i >= 2:
+                        if is_test and i >= 4:
                             return 590
                     except Exception as e:
                         i += 1

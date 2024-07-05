@@ -49,7 +49,7 @@ def ai_ref2(text):
     Örnek:
     Stephane A. Management of congenital cholesteatoma with otoendoscopic surgery: case report. Turkiye Klinikleri J Med Sci. 2010;30(2):803-7.
     """
-    response = model.generate_content(f"Metinde verceğim kısım bir akadamik makale ben senin bu makaleyi okuyup bana şu şekilde json formatında döndürmeni istiyorum. {jsonformatım2} Formatımın başlıkları ve düzeni bu düzenini bozmadan doldurup bana bir dizi olarak geri döndür. Kaynakları alırken {atifRules} daki kurala uymayanları alma düzenleyebiliyosan düzenleyip al yoksa sadece kurala uyanı çek Null olan kısımları boşluk ver null kalmasın. Metin : {text}  ")
+    response = model.generate_content(f"Metinde verceğim kısım bir akadamik makale ben senin bu makaleyi okuyup bana şu şekilde json formatında döndürmeni istiyorum. {jsonformatım2} Formatımın başlıkları ve düzeni bu düzenini bozmadan doldurup bana bir dizi olarak geri döndür. . Metin : {text}  ")
 
     try:
         if response and response.text:
