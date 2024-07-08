@@ -570,6 +570,11 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         pdf_gemini_data[0]['articleTitle']['TR'] = pdf_gemini_data[0]['articleTitle']['TR'].replace('\n', '')
                         pdf_gemini_data[0]['articleTitle']['ENG'] = pdf_gemini_data[0]['articleTitle']['ENG'].replace('\n', '')
 
+                        for authors in pdf_gemini_data[0]['articleAuthors']:
+                            for key, value in authors.items():
+                                if isinstance(value, str):
+                                    authors[key] = value.replace('\n', '')
+
 
                         for article in pdf_gemini_data[0]['articleReferences']:
                             for key, value in article.items():
@@ -579,6 +584,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         
                         article_references = pdf_gemini_data[0]['articleReferences']
                         merged_references = []
+                        merged_filtered_references = []
                         
 
                         no_ref = 0
@@ -590,16 +596,18 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             p_number = ''.join(filter(lambda x: x.isdigit() or x == '-', input_str))
                             return p_number
 
+                        alt_dize = ". . . ;"
+
                         for ref in article_references:
 
                             sayfa_no = safe_str(ref['Sayfa No'])
                             sayfa_no = only_number(sayfa_no)
                             
 
-                            if not safe_str(ref['Yazarlar']) and safe_str(ref['Makale İsmi']) and safe_str(ref['Dergi İsmi']) and safe_str(ref['Yıl']) and safe_str(ref['Cilt']) and safe_str(ref['Sayı']) and safe_str(ref['Sayfa No']):
+                            if not ref['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and ref['Cilt'] and ref['Sayı'] and ref['Sayfa No']:
                                 continue        
 
-                            if safe_str(ref['Yazarlar']) and safe_str(ref['Makale İsmi']) and safe_str(ref['Dergi İsmi']) and safe_str(ref['Yıl']) and safe_str(ref['Cilt']) and safe_str(ref['Sayı']) and safe_str(ref['Sayfa No']):
+                            elif ['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and ref['Cilt'] and ref['Sayı'] and ref['Sayfa No']:
                                 sayi = safe_str(ref['Sayı'])
                                 sayi = only_number(sayi)
                                 yazarlar = safe_str(ref['Yazarlar'])
@@ -607,6 +615,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 merged_ref = f"{yazarlar}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {safe_str(ref['Yıl'])};{safe_str(ref['Cilt'])}({sayi}):{sayfa_no}."
                                 merged_ref = merged_ref.replace('..', '.')
                                 merged_references.append(merged_ref)
+                                merged_filtered_references = [metin for metin in merged_references if metin != alt_dize]
                             else:
                                 yil = safe_str(ref['Yıl'])
                                 sayi = safe_str(ref['Sayı'])
@@ -627,6 +636,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 merged_ref = f"{yazarlar}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {yil_formatted}{cilt}{sayi_formatted}{sayfa_no_formatted}"
                                 merged_ref = merged_ref.replace('..', '.')
                                 merged_references.append(merged_ref)
+                                merged_filtered_references = [metin for metin in merged_references if metin != alt_dize]
                                 no_ref = 1
 
                         if no_ref == 1:
@@ -658,7 +668,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
 
                         final_article_data = {
                             "journalName": journal_name,
-                            "articleType": pdf_gemini_data[0]['articleType'] if pdf_gemini_data[0]['articleType'] else None,
+                            "articleType": article_type if article_type else None,
                             "articleDOI": pdf_gemini_data[0]['articleDOI'] if pdf_gemini_data[0]['articleDOI'] else None,
                             "articleCode": pdf_gemini_data[0]['articleCode'] if pdf_gemini_data[0]['articleCode'] else None,
                             "articleYear": pdf_gemini_data[0]['articleYear'],
@@ -672,9 +682,8 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             "articleKeywords": {"TR": keywords_tr if keywords_tr else None,
                                                 "ENG": keywords_eng if keywords_eng else None},
                             "articleAuthors": pdf_gemini_data[0]['articleAuthors'] if pdf_gemini_data[0]['articleAuthors'] else None,
-                            "articleReferences": pdf_gemini_data[0]['articleReferences'],
+                            "articleReferences": merged_filtered_references,
                             "articleURL": article_url,
-                            "mergedReferences" : merged_references,
                             "temporaryPDF": ""}
                         
                         '''
