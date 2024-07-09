@@ -475,7 +475,6 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             # GO TO THE ENGLISH TAB
                             language_tabs[1].click()
                             time.sleep(0.7)
-
                             eng_article_element, article_title_eng, abstract_eng_element = dergipark_components.get_english_data(
                                 driver)
 
@@ -521,7 +520,6 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 except Exception:
                                     pass
                                 ref_count += 1
-
                         authors = list()
                         author_elements = dergipark_components.get_author_elements(driver)
                         for author_element in author_elements:
@@ -540,104 +538,104 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 send_notification(DownloadError(f"Download was not finished in time, "
                                                                 f"{journal_name, recent_volume, recent_issue},"
                                                                 f" article num {i}."))
-                        pdf_names = list_pdf_names(download_path)
-                        # AI START
-                        pdf_text = pdf_to_text(download_path+'/'+pdf_names)
-                        pdf_gemini_data = ai_ref2(pdf_text)
-                        # Add Missing Email
-                        
-                        emails = emails_from_pdf(download_path+'/'+pdf_names)
-                        
-                        for email in emails:
-                            for author in authors:
-                                if author.mail == None:
-                                    author_name_parts = author.name.lower().split()
-                                    if any(part in email.lower() for part in author_name_parts):
-                                        author.mail = email
-                                        break
-                                else:
-                                    pass
-                                       
-                        # Add Missing Doi                
-                        abstract_tr = abstract_tr.replace("\n","")
-                        abstract_eng = abstract_eng.replace("\n","")
+                                
 
-                        if article_doi == None:     
-                            pdf_names = list_pdf_names(download_path)       
-                            pdf_doi = doi_from_pdf(download_path+'/'+pdf_names)
-                            article_doi = pdf_doi
-                            
+                        # AI START
+                        try:
+                            pdf_names = list_pdf_names(download_path)
+                            pdf_text = pdf_to_text(download_path+'/'+pdf_names)
+                            pdf_gemini_data = ai_ref2(pdf_text)
+                        except Exception as e:
+                            try:
+                                time.sleep(60)
+                                pdf_gemini_data = ai_ref2(pdf_text)
+                            except Exception as e:
+                                try:
+                                    time.sleep(60)
+                                    pdf_gemini_data = ai_ref2(pdf_text)
+                                except Exception as e:
+                                    print(e)
+
+                        
+
+
                         pdf_gemini_data[0]['articleTitle']['TR'] = pdf_gemini_data[0]['articleTitle']['TR'].replace('\n', '')
                         pdf_gemini_data[0]['articleTitle']['ENG'] = pdf_gemini_data[0]['articleTitle']['ENG'].replace('\n', '')
+                        try:
+                            for authors in pdf_gemini_data[0]['articleAuthors']:
+                                for key, value in authors.items():
+                                    if isinstance(value, str):
+                                        authors[key] = value.replace('\n', '')
 
-                        for authors in pdf_gemini_data[0]['articleAuthors']:
-                            for key, value in authors.items():
-                                if isinstance(value, str):
-                                    authors[key] = value.replace('\n', '')
 
-
-                        for article in pdf_gemini_data[0]['articleReferences']:
-                            for key, value in article.items():
-                                if isinstance(value, str):
-                                    article[key] = value.replace('\n', '')
-
+                            for article in pdf_gemini_data[0]['articleReferences']:
+                                for key, value in article.items():
+                                    if isinstance(value, str):
+                                        article[key] = value.replace('\n', '')
+                        except Exception as e:
+                            pass
                         
                         article_references = pdf_gemini_data[0]['articleReferences']
                         merged_references = []
-                        merged_filtered_references = []
                         
-
                         no_ref = 0
 
                         def safe_str(value):
-                            return "" if value is None else value
-            
+                            try:
+                                return "" if value is None else value
+                            except Exception as e:
+                                pass
                         def only_number(input_str):
-                            p_number = ''.join(filter(lambda x: x.isdigit() or x == '-', input_str))
-                            return p_number
+                            try:
+                                p_number = ''.join(filter(lambda x: x.isdigit() or x == '-', input_str))
+                                return p_number
+                            except Exception as e:
+                                print("exception")
 
                         alt_dize = ". . . ;"
-
+                        print("satır: 600", "data:")
                         for ref in article_references:
-
-                            sayfa_no = safe_str(ref['Sayfa No'])
-                            sayfa_no = only_number(sayfa_no)
-                            
-
-                            if not ref['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and ref['Cilt'] and ref['Sayı'] and ref['Sayfa No']:
-                                continue        
-
-                            elif ['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and ref['Cilt'] and ref['Sayı'] and ref['Sayfa No']:
-                                sayi = safe_str(ref['Sayı'])
-                                sayi = only_number(sayi)
-                                yazarlar = safe_str(ref['Yazarlar'])
-                                yazarlar = yazarlar.replace('\u202f', '.')
-                                merged_ref = f"{yazarlar}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {safe_str(ref['Yıl'])};{safe_str(ref['Cilt'])}({sayi}):{sayfa_no}."
-                                merged_ref = merged_ref.replace('..', '.')
-                                merged_references.append(merged_ref)
-                                merged_filtered_references = [metin for metin in merged_references if metin != alt_dize]
-                            else:
-                                yil = safe_str(ref['Yıl'])
-                                sayi = safe_str(ref['Sayı'])
-                                sayi = only_number(sayi)
-                                yazarlar = safe_str(ref['Yazarlar'])
-                                yazarlar = yazarlar.replace('\u202f','')
+                            try:
+                                sayfa_no = safe_str(ref['Sayfa No'])
+                                sayfa_no = only_number(sayfa_no)
 
 
-                                sayi_formatted = f"{sayi}:" if sayi else ""
-                                sayfa_no_formatted = f"{sayfa_no}." if sayfa_no else ""
-                                yil_formatted = f"{yil};"
-                                if safe_str(ref['Sayı']) or safe_str(ref['Sayfa No']):
-                                    cilt = f"{safe_str(ref['Cilt'])},"
+                                if not ref['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and ref['Cilt'] and ref['Sayı'] and ref['Sayfa No']:
+                                    continue
+
+                                elif ['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and ref['Cilt'] and ref['Sayı'] and ref['Sayfa No']:
+                                    sayi = safe_str(ref['Sayı'])
+                                    sayi = only_number(sayi)
+                                    yazarlar = safe_str(ref['Yazarlar'])
+                                    yazarlar = yazarlar.replace('\u202f', '.')
+                                    merged_ref = f"{yazarlar}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {safe_str(ref['Yıl'])};{safe_str(ref['Cilt'])}({sayi}):{sayfa_no}."
+                                    merged_ref = merged_ref.replace('..', '.')
+                                    merged_references.append(merged_ref)
                                 else:
-                                    cilt = f"{safe_str(ref['Cilt'])}"
+                                    yil = safe_str(ref['Yıl'])
+                                    sayi = safe_str(ref['Sayı'])
+                                    sayi = only_number(sayi)
+                                    yazarlar = safe_str(ref['Yazarlar'])
+                                    yazarlar = yazarlar.replace('\u202f','')
 
 
-                                merged_ref = f"{yazarlar}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {yil_formatted}{cilt}{sayi_formatted}{sayfa_no_formatted}"
-                                merged_ref = merged_ref.replace('..', '.')
-                                merged_references.append(merged_ref)
-                                merged_filtered_references = [metin for metin in merged_references if metin != alt_dize]
-                                no_ref = 1
+                                    sayi_formatted = f"{sayi}:" if sayi else ""
+                                    sayfa_no_formatted = f"{sayfa_no}." if sayfa_no else ""
+                                    yil_formatted = f"{yil};"
+                                    if safe_str(ref['Sayı']) or safe_str(ref['Sayfa No']):
+                                        cilt = f"{safe_str(ref['Cilt'])},"
+                                    else:
+                                        cilt = f"{safe_str(ref['Cilt'])}"
+
+
+                                    merged_ref = f"{yazarlar}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {yil_formatted}{cilt}{sayi_formatted}{sayfa_no_formatted}"
+                                    merged_ref = merged_ref.replace('..', '.')
+                                    merged_references.append(merged_ref)
+                                    no_ref = 1
+                            except Exception as e:
+                                print(f"Error text: {e}")
+
+                        merged_filtered_references = [metin for metin in merged_references if metin != alt_dize]
 
                         if no_ref == 1:
                             #TODO mail sistemi ile kaynakçanın hatalı olduğu bilgisi verilebilir!
@@ -720,15 +718,25 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                     final_article_data["articleDOI"] = azure_article_data["doi"].strip()
 
                         if is_test:
-                            pprint.pprint(final_article_data)
-                            save_json_to_txt(final_article_data)
-
+                            try:
+                                pprint.pprint(final_article_data)
+                            except Exception as e:
+                                print(e)
+                            try:
+                                print(final_article_data)
+                            except Exception as e:
+                                print(e)
+                            try:
+                                save_json_to_txt(final_article_data)
+                            except Exception as e:
+                                print(e)
+                        
                         i += 1  # Loop continues with the next article
                         
                         clear_directory(download_path)
-                       
                         
-                        if is_test and i >= 4:
+                        time.sleep(120)
+                        if is_test and i >= 6:
                             return 590
                     except Exception as e:
                         i += 1

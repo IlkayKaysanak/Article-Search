@@ -65,5 +65,5 @@ def ai_ref2(text):
         else:
             print("Error: Empty or invalid response.")
             return None
-    except ValueError as e:
+    except Exception as e:
         print(f"Error text: {e}")
