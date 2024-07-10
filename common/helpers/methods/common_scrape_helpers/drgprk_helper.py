@@ -222,19 +222,17 @@ def format_file_name(downloads_path: str, journal_details_name: str) -> str:
         name_element_list = journal_details_name.replace('ı', 'i').replace('ğ', 'g').split()
         formatted_element_list = []
         for item in name_element_list:
-            formatted_element_list.append(item.lower().strip() \
-                                          .encode(encoding="ascii", errors="ignore").decode(encoding="UTF-8"))
+            formatted_element_list.append(item.lower().strip().encode(encoding="ascii", errors="ignore").decode(encoding="UTF-8"))
         formatted_name = os.path.join(downloads_path, ("_".join(formatted_element_list) + ".pdf"))
         # remove linux reserved characters from formatted_name and cut it to 250 characters
         formatted_name = re.sub(r"[\/\\\:\*\?\"\<\>\|]", "", formatted_name)
         formatted_name = formatted_name[:250]
         files = [os.path.join(downloads_path, file_name) for file_name in os.listdir(downloads_path)]
-
+        formatted_name = os.path.join(downloads_path, os.path.basename(formatted_name))
         os.rename(max(files, key=os.path.getctime), formatted_name)
         return formatted_name
     except Exception as e:
-        send_notification(
-            GeneralError(f'Error whilst formatting file name with dergipark_helper format_file_name. Error: {e}'))
+        send_notification(GeneralError(f'Error whilst formatting file name with dergipark_helper format_file_name. Error: {e}'))
 
 
 def abstract_formatter(abstract, language) -> str:

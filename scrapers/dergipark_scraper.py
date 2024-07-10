@@ -15,7 +15,7 @@ from common.errors import DownloadError, ParseError
 from common.helpers.methods.common_scrape_helpers.check_download_finish import check_download_finish
 from common.helpers.methods.common_scrape_helpers.clear_directory import clear_directory
 from common.helpers.methods.common_scrape_helpers.drgprk_helper import author_converter
-from common.helpers.methods.common_scrape_helpers.drgprk_helper import reference_formatter, \
+from common.helpers.methods.common_scrape_helpers.drgprk_helper import reference_formatter, format_file_name, \
     abstract_formatter, get_correspondance_name
 from common.helpers.methods.pdf_cropper import crop_pages, split_in_half
 from common.services.adobe.adobe_helper import AdobeHelper
@@ -276,7 +276,8 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                 temp_txt = latest_publication_element.text
 
                 recent_volume = int(temp_txt[temp_txt.index(":") + 1:temp_txt.index("Sayı")].strip()) \
-                    if (not "igusabder" in start_page_url and not "pub/isad" in start_page_url and not "pub/aeskd" in start_page_url) \
+                    if (
+                            not "igusabder" in start_page_url and not "pub/isad" in start_page_url and not "pub/aeskd" in start_page_url) \
                     else int(temp_txt.split()[0])
                 try:
                     recent_issue = int(temp_txt.split()[-1])
@@ -291,9 +292,6 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
 
             # START DOWNLOADS IF ISSUE IS NOT SCANNED
             if not is_issue_scanned:
-                if is_test:
-                    update_scanned_issues(recent_volume, recent_issue,
-                                          get_logs_path(parent_type, file_reference))
                 article_urls = list()
                 dergipark_components.go_to_issue_page(driver, latest_publication_element, journal_name, recent_volume,
                                                       recent_issue)
@@ -365,12 +363,13 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         adobe_references, location_header = None, None
                         if check_download_finish(download_path):
                             # Formatted name will be saved to the variable and the PDF name is already formatted
-                            # formatted_name = format_file_name(download_path,
-                            #                                   journal_name
-                            #                                   + ' '
-                            #                                   + str(recent_volume)
-                            #                                   + str(recent_issue)
-                            #                                   + str(i))
+
+                            formatted_name = format_file_name(download_path,
+                                                              journal_name
+                                                              + ' '
+                                                              + str(recent_volume)
+                                                              + str(recent_issue)
+                                                              + str(i))
 
                             file_name = get_recently_downloaded_file_name(download_path, journal_name, article_url)
                             if not file_name:
@@ -378,7 +377,8 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             if with_azure:
                                 first_pages_cropped_pdf = crop_pages(file_name, pages_to_send)
                                 location_header = AzureHelper.analyse_pdf(
-                                    first_pages_cropped_pdf, is_tk=False)  # Location header is the response address of Azure API
+                                    first_pages_cropped_pdf,
+                                    is_tk=False)  # Location header is the response address of Azure API
                                 if not location_header:
                                     with_azure = False
                             if with_adobe and pdf_scrape_type.strip() != "A_DRG & R":
@@ -429,7 +429,7 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                         article_title_tr = element.text.strip()
                                 for element in abstract_elements:
                                     if element.text:
-                                        abstract_tr= abstract_formatter(element.find_element(By.TAG_NAME, 'p').text,
+                                        abstract_tr = abstract_formatter(element.find_element(By.TAG_NAME, 'p').text,
                                                                          "tr")
                                 for element in keywords_elements:
                                     if element.text:
@@ -538,12 +538,11 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 send_notification(DownloadError(f"Download was not finished in time, "
                                                                 f"{journal_name, recent_volume, recent_issue},"
                                                                 f" article num {i}."))
-                                
 
                         # AI START
                         try:
                             pdf_names = list_pdf_names(download_path)
-                            pdf_text = pdf_to_text(download_path+'/'+pdf_names)
+                            pdf_text = pdf_to_text(download_path + '/' + pdf_names)
                             pdf_gemini_data = ai_ref2(pdf_text)
                         except Exception as e:
                             try:
@@ -556,28 +555,28 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 except Exception as e:
                                     print(e)
 
-                        
-
-
-                        pdf_gemini_data[0]['articleTitle']['TR'] = pdf_gemini_data[0]['articleTitle']['TR'].replace('\n', '')
-                        pdf_gemini_data[0]['articleTitle']['ENG'] = pdf_gemini_data[0]['articleTitle']['ENG'].replace('\n', '')
+                        pdf_gemini_data[0]['articleTitle']['TR'] = pdf_gemini_data[0]['articleTitle']['TR'].replace(
+                            '\n', '')
+                        pdf_gemini_data[0]['articleTitle']['ENG'] = pdf_gemini_data[0]['articleTitle']['ENG'].replace(
+                            '\n', '')
                         try:
                             for authors in pdf_gemini_data[0]['articleAuthors']:
                                 for key, value in authors.items():
                                     if isinstance(value, str):
                                         authors[key] = value.replace('\n', '')
 
-
                             for article in pdf_gemini_data[0]['articleReferences']:
                                 for key, value in article.items():
                                     if isinstance(value, str):
                                         article[key] = value.replace('\n', '')
+
+
                         except Exception as e:
                             pass
-                        
+
                         article_references = pdf_gemini_data[0]['articleReferences']
                         merged_references = []
-                        
+
                         no_ref = 0
 
                         def safe_str(value):
@@ -585,12 +584,13 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 return "" if value is None else value
                             except Exception as e:
                                 pass
+
                         def only_number(input_str):
                             try:
                                 p_number = ''.join(filter(lambda x: x.isdigit() or x == '-', input_str))
                                 return p_number
                             except Exception as e:
-                                print("exception")
+                                pass
 
                         alt_dize = ". . . ;"
                         print("satır: 600", "data:")
@@ -599,11 +599,12 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 sayfa_no = safe_str(ref['Sayfa No'])
                                 sayfa_no = only_number(sayfa_no)
 
-
-                                if not ref['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and ref['Cilt'] and ref['Sayı'] and ref['Sayfa No']:
+                                if not ref['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and \
+                                        ref['Cilt'] and ref['Sayı'] and ref['Sayfa No']:
                                     continue
 
-                                elif ['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and ref['Cilt'] and ref['Sayı'] and ref['Sayfa No']:
+                                elif ['Yazarlar'] and ref['Makale İsmi'] and ref['Dergi İsmi'] and ref['Yıl'] and ref[
+                                    'Cilt'] and ref['Sayı'] and ref['Sayfa No']:
                                     sayi = safe_str(ref['Sayı'])
                                     sayi = only_number(sayi)
                                     yazarlar = safe_str(ref['Yazarlar'])
@@ -616,17 +617,15 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                     sayi = safe_str(ref['Sayı'])
                                     sayi = only_number(sayi)
                                     yazarlar = safe_str(ref['Yazarlar'])
-                                    yazarlar = yazarlar.replace('\u202f','')
-
+                                    yazarlar = yazarlar.replace('\u202f', '')
 
                                     sayi_formatted = f"{sayi}:" if sayi else ""
-                                    sayfa_no_formatted = f"{sayfa_no}." if sayfa_no else ""
+                                    sayfa_no_formatted = f"{safe_str(sayfa_no)}." if safe_str(sayfa_no) else ""
                                     yil_formatted = f"{yil};"
                                     if safe_str(ref['Sayı']) or safe_str(ref['Sayfa No']):
                                         cilt = f"{safe_str(ref['Cilt'])},"
                                     else:
                                         cilt = f"{safe_str(ref['Cilt'])}"
-
 
                                     merged_ref = f"{yazarlar}. {safe_str(ref['Makale İsmi'])}. {safe_str(ref['Dergi İsmi'])}. {yil_formatted}{cilt}{sayi_formatted}{sayfa_no_formatted}"
                                     merged_ref = merged_ref.replace('..', '.')
@@ -636,7 +635,9 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                 print(f"Error text: {e}")
 
                         merged_filtered_references = [metin for metin in merged_references if metin != alt_dize]
-
+                        merged_filtered_references = [reference_formatter(reference, True, count)
+                                                      for count, reference
+                                                      in enumerate(merged_filtered_references, start=1)]
                         if no_ref == 1:
                             #TODO mail sistemi ile kaynakçanın hatalı olduğu bilgisi verilebilir!
                             no_ref = 0
@@ -652,7 +653,8 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                                                                                            correspondance_name)
                                 if len(azure_article_data["emails"]) == 1:
                                     for author in authors:
-                                        author.mail = azure_article_data["emails"][0] if author.is_correspondence else None
+                                        author.mail = azure_article_data["emails"][
+                                            0] if author.is_correspondence else None
                             else:
                                 with_azure = False
                         # So far both the Azure data and the data scraped from Dergipark are constructed
@@ -667,24 +669,31 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         final_article_data = {
                             "journalName": journal_name,
                             "articleType": article_type if article_type else None,
-                            "articleDOI": pdf_gemini_data[0]['articleDOI'] if pdf_gemini_data[0]['articleDOI'] else None,
-                            "articleCode": pdf_gemini_data[0]['articleCode'] if pdf_gemini_data[0]['articleCode'] else None,
+                            "articleDOI": pdf_gemini_data[0]['articleDOI'] if pdf_gemini_data[0][
+                                'articleDOI'] else None,
+                            "articleCode": pdf_gemini_data[0]['articleCode'] if pdf_gemini_data[0][
+                                'articleCode'] else None,
                             "articleYear": pdf_gemini_data[0]['articleYear'],
                             "articleVolume": pdf_gemini_data[0]['articleVolume'],
                             "articleIssue": pdf_gemini_data[0]['articleIssue'],
                             "articlePageRange": article_page_range,
-                            "articleTitle": {"TR": pdf_gemini_data[0]['articleTitle']['TR'] if pdf_gemini_data[0]['articleTitle']['TR'] else None,
-                                             "ENG": pdf_gemini_data[0]['articleTitle']['ENG'] if pdf_gemini_data[0]['articleTitle']['ENG'] else None},
+                            "articleTitle": {
+                                "TR": pdf_gemini_data[0]['articleTitle']['TR'] if pdf_gemini_data[0]['articleTitle'][
+                                    'TR'] else None,
+                                "ENG": pdf_gemini_data[0]['articleTitle']['ENG'] if pdf_gemini_data[0]['articleTitle'][
+                                    'ENG'] else None},
                             "articleAbstracts": {"TR": abstract_tr if abstract_tr else None,
                                                  "ENG": abstract_eng if abstract_eng else None},
                             "articleKeywords": {"TR": keywords_tr if keywords_tr else None,
                                                 "ENG": keywords_eng if keywords_eng else None},
-                            "articleAuthors": pdf_gemini_data[0]['articleAuthors'] if pdf_gemini_data[0]['articleAuthors'] else None,
+                            "articleAuthors": pdf_gemini_data[0]['articleAuthors'] if pdf_gemini_data[0][
+                                'articleAuthors'] else None,
                             "articleReferences": merged_filtered_references,
                             "articleURL": article_url,
                             "temporaryPDF": ""}
-                        
+
                         '''
+                        
                         
                         #references placement
                         if dergipark_references:
@@ -707,10 +716,12 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                         '''
                         if azure_article_data:
                             if azure_article_data.get("article_keywords", None):
-                                if azure_article_data["article_keywords"].get("tr", None) and not final_article_data["articleKeywords"]["TR"]:
+                                if azure_article_data["article_keywords"].get("tr", None) and not \
+                                final_article_data["articleKeywords"]["TR"]:
                                     final_article_data["articleKeywords"]["TR"] = \
                                         azure_article_data["article_keywords"]["tr"]
-                                if azure_article_data["article_keywords"].get("eng", None) and not final_article_data["articleKeywords"]["ENG"]:
+                                if azure_article_data["article_keywords"].get("eng", None) and not \
+                                final_article_data["articleKeywords"]["ENG"]:
                                     final_article_data["articleKeywords"]["ENG"] = \
                                         azure_article_data["article_keywords"]["eng"]
                             if not final_article_data["articleDOI"] and with_azure:
@@ -721,23 +732,33 @@ def dergipark_scraper(journal_name, start_page_url, pdf_scrape_type, pages_to_se
                             try:
                                 pprint.pprint(final_article_data)
                             except Exception as e:
-                                print(e)
+                                pass
                             try:
                                 print(final_article_data)
                             except Exception as e:
-                                print(e)
+                                pass
                             try:
                                 save_json_to_txt(final_article_data)
                             except Exception as e:
-                                print(e)
-                        
+                                pass
+
                         i += 1  # Loop continues with the next article
-                        
+
+                        # Send data to Client API
+                        tk_worker = TKServiceWorker()
+                        final_article_data["temporaryPDF"] = tk_worker.encode_base64(file_name)
+                        response = tk_worker.send_data(final_article_data)
+                        if isinstance(response, Exception):
+                            raise response
+
                         clear_directory(download_path)
-                        
-                        time.sleep(120)
+
+                        #time.sleep(120)
                         if is_test and i >= 6:
                             return 590
+                        update_scanned_issues(recent_volume, recent_issue,
+                                              get_logs_path(parent_type, file_reference))
+
                     except Exception as e:
                         i += 1
                         clear_directory(download_path)
